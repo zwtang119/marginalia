@@ -1,0 +1,17 @@
+{
+  "id": "S2",
+  "name": "运行审计并报告问题",
+  "description": "Agent 运行审计脚本并报告发现的问题",
+  "input": {
+    "task": "运行审计并报告知识库当前状态",
+    "context": "知识库已初始化，可能存在缺陷"
+  },
+  "expected": {
+    "file_location": "audit/reports/",
+    "structure": {
+      "has_defect_list": true,
+      "has_priority": true
+    },
+    "forbidden": ["跳过 audit 步骤"]
+  }
+}

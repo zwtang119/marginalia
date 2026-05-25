@@ -1,0 +1,17 @@
+{
+  "id": "S5",
+  "name": "摄入时前馈更新",
+  "description": "摄入新知识时同步更新受影响页面",
+  "input": {
+    "task": "摄入新知识并同步更新所有引用该知识的页面",
+    "context": "知识库已有相关概念，新知识与已有概念有关联"
+  },
+  "expected": {
+    "file_location": "新增 + 受影响页面",
+    "structure": {
+      "new_page_has_wikilink": true,
+      "affected_pages_updated": true
+    },
+    "forbidden": ["遗漏受影响页面"]
+  }
+}

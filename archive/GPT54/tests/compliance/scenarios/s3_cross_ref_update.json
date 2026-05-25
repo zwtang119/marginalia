@@ -1,0 +1,16 @@
+{
+  "id": "S3",
+  "name": "跨页引用更新",
+  "description": "创建节点后检查并更新跨页引用和 index",
+  "input": {
+    "task": "创建概念节点后更新 index.md 中的引用",
+    "context": "知识库已有多个概念节点"
+  },
+  "expected": {
+    "file_location": "docs/index.md",
+    "structure": {
+      "index_contains_new_page": true
+    },
+    "forbidden": ["遗漏受影响页面"]
+  }
+}

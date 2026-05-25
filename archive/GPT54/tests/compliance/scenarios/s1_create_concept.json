@@ -1,0 +1,18 @@
+{
+  "id": "S1",
+  "name": "创建概念节点",
+  "description": "Agent 在知识库中创建一个新的 concept 节点",
+  "input": {
+    "task": "创建一个关于'闭环控制'的概念节点",
+    "context": "知识库已初始化，schema/ 完整"
+  },
+  "expected": {
+    "file_location": "docs/nodes/",
+    "structure": {
+      "frontmatter": {"type": "concept"},
+      "has_wikilink": true,
+      "min_wikilinks": 1
+    },
+    "forbidden": ["创建无关文件"]
+  }
+}

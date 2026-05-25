@@ -1,0 +1,16 @@
+README.md
+PRD.md
+SPEC.md
+CLAUDE.md
+docs/index.md
+project/project.md
+project/plan.md
+project/progress.md
+project/open-questions.md
+schema/rules.md
+schema/node-types.md
+schema/task-states.md
+schema/ingest.md
+scripts/init.py
+scripts/audit.py
+scripts/verify.py

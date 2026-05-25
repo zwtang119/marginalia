@@ -1,0 +1,17 @@
+{
+  "id": "S4",
+  "name": "修复缺陷",
+  "description": "Agent 发现缺陷后执行修复并验证",
+  "input": {
+    "task": "修复 audit 报告中优先级最高的缺陷",
+    "context": "知识库存在已知断链"
+  },
+  "expected": {
+    "file_location": "修复目标文件",
+    "structure": {
+      "defect_resolved": true,
+      "no_new_broken_links": true
+    },
+    "forbidden": ["破坏现有内容"]
+  }
+}
