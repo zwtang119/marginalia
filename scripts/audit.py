@@ -35,8 +35,6 @@ def should_skip_file(rel_path: Path, skip_dirs: set[str]) -> bool:
         if d in parts:
             return True
     for part in parts:
-        if "archive" in part.lower() and part != part.lower():
-            pass
         if "-archive" in part.lower():
             return True
     return False
