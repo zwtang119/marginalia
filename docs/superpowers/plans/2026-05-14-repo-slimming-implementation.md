@@ -790,7 +790,7 @@ Marginalia 是一个 AI 助手驱动的知识管理系统。它不是数据库�
 ## 使用场景
 
 ```
-你的项目（如 ~/github/CDS）
+你的项目（如 ~/projects/my-project）
     │
     ▼ 你对 AI 说：
     "参照 ~/download/marginalia，在我的项目里搭建知识库"

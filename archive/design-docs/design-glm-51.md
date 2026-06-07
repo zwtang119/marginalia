@@ -404,7 +404,7 @@ ROOT/
 
 ```bash
 # Step 1: 克隆仓库
-git clone https://github.com/xxx/Marginalia.git
+git clone https://github.com/zwtang119/marginalia.git
 cd Marginalia
 
 # Step 2: 初始化你的知识库

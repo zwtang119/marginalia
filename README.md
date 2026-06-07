@@ -37,7 +37,7 @@ Marginalia 是一个 AI 助手驱动的知识管理系统。它不是数据库�
 
 ```bash
 # 1. Clone 本仓库
-git clone https://github.com/xxx/Marginalia.git ~/download/marginalia
+git clone https://github.com/zwtang119/marginalia.git ~/download/marginalia
 
 # 2. 在你的项目中，对 AI 说：
 #    "参照 ~/download/marginalia，在我的项目里搭建知识库，并摄入文档"

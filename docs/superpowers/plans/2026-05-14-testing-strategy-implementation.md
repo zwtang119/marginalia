@@ -82,7 +82,7 @@ GPT54/tests/
 - [ ] **Step 1: 创建子目录和 __init__.py**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 mkdir -p tests/unit tests/regression/fixtures tests/actuator tests/interface tests/protocol tests/compliance/scenarios tests/compliance/results
 touch tests/unit/__init__.py tests/regression/__init__.py tests/actuator/__init__.py tests/interface/__init__.py tests/protocol/__init__.py tests/compliance/__init__.py
 ```
@@ -90,7 +90,7 @@ touch tests/unit/__init__.py tests/regression/__init__.py tests/actuator/__init_
 - [ ] **Step 2: 迁移现有测试文件**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 cp tests/test_init.py tests/unit/test_init.py
 cp tests/test_audit.py tests/unit/test_audit.py
 cp tests/test_verify.py tests/unit/test_verify.py
@@ -102,7 +102,7 @@ cp tests/test_protocol_discovery.py tests/protocol/test_protocol_discovery.py
 迁移后的测试文件通过 `subprocess.run` 调用脚本，不涉及 Python import，无需修改路径。验证：
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/unit/test_init.py tests/unit/test_audit.py tests/unit/test_verify.py tests/protocol/test_protocol_discovery.py -v
 ```
 
@@ -111,7 +111,7 @@ Expected: 所有现有测试 PASS
 - [ ] **Step 4: 删除旧测试文件**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 rm tests/test_init.py tests/test_audit.py tests/test_verify.py tests/test_protocol_discovery.py
 rm -rf tests/__pycache__
 ```
@@ -121,7 +121,7 @@ rm -rf tests/__pycache__
 冒烟测试 `tests/smoke/test_cli_smoke.sh` 使用绝对路径计算，无需修改。验证：
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 bash tests/smoke/test_cli_smoke.sh
 ```
 
@@ -130,7 +130,7 @@ Expected: 输出 `smoke-pass`
 - [ ] **Step 6: 全量回归验证**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/unit/ tests/protocol/ -v
 bash tests/smoke/test_cli_smoke.sh
 ```
@@ -218,7 +218,7 @@ if __name__ == "__main__":
 - [ ] **Step 2: 运行测试确认失败**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/regression/test_audit_snapshot.py::AuditTrendTest -v
 ```
 
@@ -282,7 +282,7 @@ def _append_trend(root, counts):
 - [ ] **Step 4: 运行测试确认通过**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/regression/test_audit_snapshot.py::AuditTrendTest -v
 ```
 
@@ -291,7 +291,7 @@ Expected: PASS
 - [ ] **Step 5: 全量回归验证**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/unit/ tests/protocol/ tests/regression/ -v
 ```
 
@@ -318,7 +318,7 @@ git commit -m "feat: add trend tracking to audit.py for stability analysis"
 用 init.py 生成基础骨架，然后手动添加已知缺陷（断链、薄页面等）：
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python scripts/init.py --root tests/regression/fixtures/us_military_kb
 ```
 
@@ -329,7 +329,7 @@ python scripts/init.py --root tests/regression/fixtures/us_military_kb
 - [ ] **Step 2: 生成基线快照**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python scripts/audit.py --root tests/regression/fixtures/us_military_kb
 ```
 
@@ -389,7 +389,7 @@ class AuditSnapshotTest(unittest.TestCase):
 - [ ] **Step 4: 运行测试确认通过**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/regression/test_audit_snapshot.py -v
 ```
 
@@ -549,7 +549,7 @@ if __name__ == "__main__":
 - [ ] **Step 3: 运行测试确认通过**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/actuator/ -v
 ```
 
@@ -647,7 +647,7 @@ if __name__ == "__main__":
 - [ ] **Step 2: 运行测试确认通过**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/interface/ -v
 ```
 
@@ -817,7 +817,7 @@ if __name__ == "__main__":
 - [ ] **Step 2: 运行测试确认通过**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/protocol/ -v
 ```
 
@@ -1218,7 +1218,7 @@ if __name__ == "__main__":
 - [ ] **Step 4: 运行 verifier 单元测试**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -c "from tests.compliance.verifier import ComplianceVerifier; print('Import OK')"
 ```
 
@@ -1241,7 +1241,7 @@ git commit -m "feat: add L3 compliance testing framework with 5 scenarios and ve
 - [ ] **Step 1: 运行全部 L1 测试**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/unit/ tests/regression/ tests/actuator/ tests/interface/ -v
 ```
 
@@ -1250,7 +1250,7 @@ Expected: 全部 PASS
 - [ ] **Step 2: 运行 L2 测试**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/protocol/ -v
 ```
 
@@ -1259,7 +1259,7 @@ Expected: 全部 PASS
 - [ ] **Step 3: 运行冒烟测试**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 bash tests/smoke/test_cli_smoke.sh
 ```
 
@@ -1268,7 +1268,7 @@ Expected: smoke-pass
 - [ ] **Step 4: 运行全量测试**
 
 ```bash
-cd /Users/tangzw119/Documents/GitHub/Marginalia/GPT54
+cd GPT54
 python -m pytest tests/ -v --ignore=tests/compliance
 bash tests/smoke/test_cli_smoke.sh
 ```
