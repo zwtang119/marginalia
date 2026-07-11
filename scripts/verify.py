@@ -6,8 +6,6 @@ from pathlib import Path
 REQUIRED_DIRS = [
     "concepts",
     "decisions",
-    "annotations",
-    "comparisons",
 ]
 
 REQUIRED_FILES = [

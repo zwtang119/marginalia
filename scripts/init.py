@@ -19,18 +19,16 @@ MARGINALIA_CLAUDE_MD_SNIPPET = """\
 ### 完成实质工作后
 - 更新 wiki/index.md（如有新页面）
 - 在相关页面添加批注：> [!memo] YYYY-MM-DD 内容
-- 运行 `python3 scripts/audit.py --root wiki/`，处理发现的问题
 """
 
 DIRECTORIES = [
     "wiki/concepts",
     "wiki/decisions",
-    "wiki/annotations",
     "wiki/comparisons",
 ]
 
 FILES = {
-    "wiki/index.md": "# 知识库索引\n\n## 概念\n\n## 决策\n\n## 批注\n\n## 对比\n",
+    "wiki/index.md": "# 知识库索引\n\n## 概念\n\n## 决策\n\n## 对比\n",
 }
 
 

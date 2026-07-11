@@ -64,7 +64,6 @@
 
 - [[concepts/xxx]]: 相关概念
 - [[decisions/xxx]]: 相关决策
-- [[annotations/xxx]]: 历史批注
 
 ---
 

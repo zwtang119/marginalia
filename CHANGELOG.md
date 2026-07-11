@@ -4,6 +4,24 @@
 
 格式基于 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [Unreleased]
+
+### Fixed
+
+- `scripts/audit.py`：修复 Python 3.9 兼容性（`from __future__ import annotations`）
+- `scripts/audit.py`：修复孤儿页误报，`index.md` 中的链接现在正确计入入链
+- `scripts/audit.py`：修复路径式 wikilink（如 `[[concepts/marginalia]]`）无法匹配孤儿页的问题
+- `scripts/audit.py`：新增链接解析边界检查，防止 `[[../etc/passwd]]` 等路径穿越链接被误判为有效
+- `scripts/verify.py`：移除虚构的 `annotations/` 和可选的 `comparisons/` 目录强制检查，与 schema 一致
+- `scripts/init.py`：移除虚构的 `wiki/annotations/` 目录创建
+- `scripts/init.py`：移除初始化 CLAUDE.md 中已废弃的"收工运行 audit.py"指令，与 rules.md v0.3.0 事件驱动触发一致
+- `templates/`：移除模板中引用虚构 `annotations/` 目录的示例链接
+
+### Changed
+
+- `README.md`：修正首次摄入阶段的描述，明确批注是页内 `> [!memo]` 块而非独立目录
+- `schema/first-ingest.md`：移除已废弃的"运行 audit.py"强制步骤，与 rules.md v0.3.0 一致
+
 ## [0.3.1] - 2026-05-15
 
 ### Added

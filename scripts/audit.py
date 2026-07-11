@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import argparse
 import json
 import re
@@ -50,22 +52,31 @@ def find_all_md_files(root: Path, skip_dirs: set[str] | None = None) -> list[Pat
 
 def resolve_wikilink(root: Path, link: str, external_kb_dirs: list[str] | None = None) -> bool:
     link = link.strip()
+    root_resolved = root.resolve()
+    # (candidate, list of allowed containment roots) pairs.
     candidates = [
-        root / f"{link}.md",
-        root / link,
-        root.parent / f"{link}.md",
-        root.parent / link,
+        (root / f"{link}.md", [root_resolved]),
+        (root / link, [root_resolved]),
+        (root.parent / f"{link}.md", [root_resolved]),
+        (root.parent / link, [root_resolved]),
     ]
     if external_kb_dirs:
         for kb_dir in external_kb_dirs:
             kb_path = Path(kb_dir)
             if not kb_path.is_absolute():
                 kb_path = root.parent / kb_dir
+            kb_resolved = kb_path.resolve()
             candidates.extend([
-                kb_path / f"{link}.md",
-                kb_path / link,
+                (kb_path / f"{link}.md", [root_resolved, kb_resolved]),
+                (kb_path / link, [root_resolved, kb_resolved]),
             ])
-    return any(c.exists() for c in candidates)
+    for c, allowed_roots in candidates:
+        if not c.exists():
+            continue
+        resolved = c.resolve()
+        if any(resolved.is_relative_to(base) for base in allowed_roots):
+            return True
+    return False
 
 
 def check_broken_links(
@@ -97,9 +108,8 @@ def check_orphan_pages(root: Path, skip_dirs: set[str] | None = None) -> list[di
     all_links = set()
     for md_file in find_all_md_files(root, skip_dirs):
         rel = md_file.relative_to(root)
-        if rel.name == "index.md":
-            continue
-        all_pages.add(str(rel))
+        if rel.name != "index.md":
+            all_pages.add(str(rel))
         text = md_file.read_text(encoding="utf-8")
         for link in find_wikilinks(text):
             all_links.add(link.strip())
@@ -107,14 +117,19 @@ def check_orphan_pages(root: Path, skip_dirs: set[str] | None = None) -> list[di
     issues = []
     for page in sorted(all_pages):
         page_stem = Path(page).stem
-        if page_stem not in all_links and str(page) not in all_links:
+        page_path = str(Path(page).with_suffix(""))
+        if (
+            page_stem not in all_links
+            and str(page) not in all_links
+            and page_path not in all_links
+        ):
             issues.append({
                 "id": f"ORPHAN-{len(issues) + 1:04d}",
                 "severity": "P2",
                 "type": "orphan_page",
                 "path": page,
                 "message": f"孤儿页：{page}（无入链）",
-                "suggested_action": f"在 index.md 或相关页面添加 [[{page_stem}]] 链接",
+                "suggested_action": f"在 index.md 或相关页面添加 [[{page_path}]] 链接",
             })
     return issues
 
