@@ -5,3 +5,6 @@
 !.env.example
 *.db
 *.sqlite
+
+# Python 缓存（2026-09-25）
+__pycache__/
