@@ -1,3 +1,9 @@
+> [!NOTE]
+> 本文件中的 CDS/Stock-Claw/OpenClaw 项目专属内容已同步迁移到 CDS-teamWiki。
+> 活跃副本位置：`CDS-teamWiki/project/plans/marginalia-2026-05-14-testing-strategy-slim.md`
+>
+> 本文件保留在 Marginalia 开源仓库中作为原始记录，未做删除。
+
 # GPT54 测试策略精简方案：从理论驱动到数据驱动
 
 ## 文档信息

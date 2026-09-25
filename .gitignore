@@ -1,1 +1,7 @@
 .DS_Store
+# --- security-sweep 2026-08-26 hardening ---
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite

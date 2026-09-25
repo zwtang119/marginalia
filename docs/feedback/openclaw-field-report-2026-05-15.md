@@ -1,3 +1,9 @@
+> [!NOTE]
+> 本文件中的 CDS/Stock-Claw/OpenClaw 项目专属内容已同步迁移到 CDS-teamWiki。
+> 活跃副本位置：`CDS-teamWiki/investigations/marginalia-feedback-openclaw-field-report-2026-05-15.md`
+>
+> 本文件保留在 Marginalia 开源仓库中作为原始记录，未做删除。
+
 # Marginalia on OpenClaw: 工程控制论视角的实地反馈报告
 
 > **报告日期**: 2026-05-15
